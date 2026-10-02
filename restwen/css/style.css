@@ -1,0 +1,318 @@
+/* =========================================================
+   PALETA DE COLORES
+   - Fondo cálido tipo mantel: #FAF6F0
+   - Texto principal:          #2B2118 (marrón muy oscuro, buen contraste)
+   - Color primario (acento):  #B5442E (rojo terracota, apetito + calidez)
+   - Color secundario:         #2F6B4F (verde oliva, ingredientes frescos)
+   - Bordes / líneas:          #E3D9CC
+   - Estados: preparación #E3A008 / listo #2F6B4F / entregado #6b6b6b / pagado #444
+   ========================================================= */
+:root {
+    --bg: #FAF6F0;
+    --texto: #2B2118;
+    --primario: #B5442E;
+    --primario-hover: #973924;
+    --secundario: #2F6B4F;
+    --borde: #E3D9CC;
+    --tarjeta: #FFFFFF;
+    --gris: #6b6b6b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    line-height: 1.4;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 24px;
+    background: var(--tarjeta);
+    border-bottom: 2px solid var(--borde);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--primario);
+}
+
+.nav-principal {
+    display: flex;
+    gap: 22px;
+    font-weight: 600;
+}
+
+.nav-principal a.activo,
+.nav-inferior-movil a.activo {
+    color: var(--primario);
+    border-bottom: 2px solid var(--primario);
+}
+
+.acciones-sesion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.usuario-actual {
+    font-size: 0.85rem;
+    color: var(--gris);
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 2px solid var(--primario);
+    background: var(--primario);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn:hover { background: var(--primario-hover); border-color: var(--primario-hover); }
+
+.btn-outline {
+    background: transparent;
+    color: var(--primario);
+}
+.btn-outline:hover { background: var(--primario); color: #fff; }
+
+.btn-secundario {
+    border-color: var(--secundario);
+    background: var(--secundario);
+}
+.btn-secundario:hover { background: #244f3a; border-color: #244f3a; }
+
+.btn-chico { padding: 5px 10px; font-size: 0.8rem; border-radius: 5px; }
+
+.contenido {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    padding-bottom: 90px; /* deja lugar a la nav inferior móvil */
+}
+
+.alerta {
+    padding: 12px 24px;
+    font-weight: 600;
+}
+.alerta-error { background: #fbe4e1; color: #7a2416; }
+.alerta-ok { background: #e4f1ea; color: #1d4a34; }
+
+/* ---------- Tarjetas / secciones genéricas ---------- */
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+}
+
+h1, h2, h3 { color: var(--texto); }
+
+/* ---------- Menú público ---------- */
+.hero {
+    text-align: center;
+    padding: 30px 10px;
+}
+.hero h1 { font-size: 2rem; margin-bottom: 6px; }
+
+.categoria-menu h2 {
+    text-transform: capitalize;
+    border-bottom: 2px solid var(--primario);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.fila-plato {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--borde);
+}
+.fila-plato .precio { color: var(--secundario); font-weight: 700; }
+
+/* ---------- Formularios ---------- */
+.form-caja {
+    max-width: 420px;
+    margin: 40px auto;
+}
+.form-caja label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.form-caja input,
+.form-caja select,
+.form-caja textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.form-caja button { margin-top: 18px; width: 100%; }
+
+/* ---------- Badges de estado ---------- */
+.badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--gris);
+}
+.badge-preparacion { background: #E3A008; }
+.badge-listo       { background: var(--secundario); }
+.badge-entregado    { background: #6b6b6b; }
+.badge-pagado       { background: #333333; }
+.badge-libre  { background: #ffffff; color: var(--texto); border: 1px solid var(--borde); }
+.badge-ocupada { background: var(--primario); }
+.badge-pagada  { background: #333333; }
+
+/* ---------- Pedidos (empleado) ---------- */
+.grid-pedidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+.pedido-card { display: flex; flex-direction: column; gap: 10px; }
+.pedido-card .cabecera-pedido { display: flex; justify-content: space-between; align-items: center; }
+.pedido-card table { width: 100%; border-collapse: collapse; }
+.pedido-card td { padding: 4px 0; }
+
+/* ---------- Grilla de mesas (barra) ---------- */
+.leyenda { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; font-size: 0.9rem; }
+.leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+.punto { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid var(--borde); }
+.punto-ocupada { background: var(--primario); }
+.punto-libre { background: #fff; }
+.punto-pagada { background: #333; }
+
+.zona-titulo { margin-top: 26px; }
+
+.grid-mesas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 14px;
+}
+.mesa-tile {
+    aspect-ratio: 1;
+    border: 2px solid var(--texto);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+.mesa-tile.ocupada { background: #fbe4e1; border-color: var(--primario); }
+.mesa-tile.pagada { background: #e7e7e7; border-color: #333; }
+.mesa-tile.libre { background: #fff; }
+.mesa-tile small { font-weight: 400; font-size: 0.75rem; color: var(--gris); }
+
+.resumen-mesas {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--borde);
+    font-weight: 600;
+}
+
+/* ---------- Detalle de mesa ---------- */
+.volver { display: inline-block; margin-bottom: 12px; color: var(--gris); font-weight: 600; }
+.cabecera-mesa { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.info-mesa { display: flex; gap: 20px; flex-wrap: wrap; margin: 10px 0 18px; color: var(--gris); font-size: 0.95rem; }
+.nota-especial {
+    background: #fff6e0;
+    border: 1px solid #f0d383;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+}
+table.tabla-platos { width: 100%; border-collapse: collapse; margin-top: 10px; }
+table.tabla-platos th, table.tabla-platos td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--borde);
+}
+
+/* ---------- Tablas admin ---------- */
+table.tabla-admin { width: 100%; border-collapse: collapse; margin-top: 14px; }
+table.tabla-admin th, table.tabla-admin td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--borde);
+    text-align: left;
+}
+table.tabla-admin th { background: #f4efe7; }
+.acciones-fila { display: flex; gap: 8px; }
+
+.panel-links { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 16px; }
+.panel-links a {
+    display: block;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+.panel-links a:hover { border-color: var(--primario); color: var(--primario); }
+
+/* ---------- Historial ---------- */
+.historial-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- Nav inferior móvil (oculta en escritorio) ---------- */
+.nav-inferior-movil { display: none; }
+
+@media (max-width: 720px) {
+    .nav-principal { display: none; }
+    .nav-inferior-movil {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background: #fff;
+        border-top: 2px solid var(--borde);
+        padding: 8px 0;
+        font-size: 0.75rem;
+        text-align: center;
+        font-weight: 700;
+    }
+}
+
+/* ---------- Extras ---------- */
+.form-fila { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.form-fila label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+.form-fila input, .form-fila select, td input, td select {
+    padding: 8px; border: 1px solid var(--borde); border-radius: 6px; font-size: 0.95rem;
+}
+.btn.btn-rojo { background: #7a2416; border-color: #7a2416; }
+.btn.btn-rojo:hover { background: #5c1b10; border-color: #5c1b10; }
+.fila-plato { align-items: center; gap: 12px; }
+.fila-plato > span:first-child { flex: 1; }
+.cant { display: inline-flex; align-items: center; gap: 4px; }
+.cant input { width: 38px; text-align: center; border: 1px solid var(--borde); border-radius: 5px; padding: 4px; font-size: 1rem; background: #fff; }
+.pie { text-align: center; color: var(--gris); padding: 10px 0 80px; font-size: 0.85rem; }
